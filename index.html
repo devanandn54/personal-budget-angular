@@ -4,102 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Budget</title>
-    <link rel="stylesheet" href="/reset.css">
-    <link rel="stylesheet" href="/main.css">
+    <!--meta description for SEO-->
+    <meta name="description" content="Personal Budget is a free management app that helps you track expenses, stay on track with alerts, and stick to financial goals">
+    <!--open graphs tags for SEO-->
+    <meta property="og:title" content="Personal Budget - Manage Your Budget Effectively">
+    <meta property="og:description" content="Personal Budget is a free app designed to help you manage and track your budget with real data, alerts, and financial planning tips.">
+
+    <link rel="stylesheet" href="/pb/reset.css">
+    <link rel="stylesheet" href="/pb/main.css">
 </head>
 <body>
-
-    <div class="menu">
+    <!--increased the base font size for A11y change in css file-->
+    <!--skip link for keyboard navigation A11y change-->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!--A11y change included role and aria-label for nav-->
+    <nav class="menu" role="navigation" aria-label="Main menu"> <!--used nav for menu-->
         <ul>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/login.html">Login</a></li>
-            <li><a href="https://google.com">Google</a></li>
+            <!--added title attribute for impact on SEO-->
+            <li><a href="/" title="Homepage-Personal Budget">Homepage</a></li>
+            <li><a href="/personal-budget1/about.html" title="Learn more about personal budget">About</a></li>
+            <li><a href="/personal-budget1/login.html" title="Login to personal budget">Login</a></li>
+            <!--added rel and target attributes for external link for impact on SEO-->
+            <li><a href="https://google.com" title="Search on google" rel="noopener" target="_blank" aria-label="Search on Google">Google</a></li>
         </ul>
-    </div>
-
-    <div class="hero">
+    </nav>
+    <!--A11y change included role and aria-label for header-->
+    <header class="hero" role="banner" aria-label="Hero section: Personal Budget App introduction"> <!--used header for hero section-->
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
-    </div>
+    </header>
+    <!--A11y change included role for main-->
+    <main class="container center" id="main-content" role="main"> <!--used main for main content-->
 
-    <div class="container center">
+        <section class="page-area"> <!--used section for page-area to wrap all the content-->
 
-        <div class="page-area">
-
-            <div class="text-box">
-                <h1>Stay on track</h1>
+            <article class="text-box"> <!--used article for independent content blocks-->
+                <!--making headings logically structured and should contain only one h1 tag for SEO-->
+                <h2>Stay on track</h2>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
                     you would get surprised! Proper budget management depends on real data... and this
                     app will help you with that!
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Alerts</h1>
+            <article class="text-box">
+                <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Results</h1>
+            <article class="text-box">
+                <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
                     Also, they to live happier lives... since they expend without guilt or fear... 
                     because they know it is all good and accounted for.
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Free</h1>
+            <article class="text-box">
+                <h2>Free</h2>
                 <p>
                     This app is free!!! And you are the only one holding your data!
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Stay on track</h1>
+            <article class="text-box">
+                <h2>Stay on track</h2>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
                     you would get surprised! Proper budget management depends on real data... and this
                     app will help you with that!
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Alerts</h1>
+            <article class="text-box">
+                <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Results</h1>
+            <article class="text-box">
+                <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
                     Also, they to live happier lives... since they expend without guilt or fear... 
                     because they know it is all good and accounted for.
                 </p>
-            </div>
+            </article>
     
-            <div class="text-box">
-                <h1>Free</h1>
+            <article class="text-box">
+                <h2>Free</h2>
                 <p>
                     This app is free!!! And you are the only one holding your data!
                 </p>
-            </div>
+            </article>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
 
-    <div class="bottom">
+    <footer class="bottom"> <!--used footer for footer content-->
         <div class="center">
-            All rights reserved &copy; Fabio Nolasco
+            All rights reserved &copy; Devanand
         </div>
-    </div>
+    </footer>
 
 </body>
 </html>
