@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Budget</title>
     <!--meta description for SEO-->
-    <meta name="description" content="Personal Budget is a free management app that helps you track expenses, stay on track with alerts, and stick to financial goals">
+    <meta name="description"
+        content="Personal Budget is a free management app that helps you track expenses, stay on track with alerts, and stick to financial goals">
     <!--open graphs tags for SEO-->
     <meta property="og:title" content="Personal Budget - Manage Your Budget Effectively">
-    <meta property="og:description" content="Personal Budget is a free app designed to help you manage and track your budget with real data, alerts, and financial planning tips.">
+    <meta property="og:description"
+        content="Personal Budget is a free app designed to help you manage and track your budget with real data, alerts, and financial planning tips.">
 
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./main.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
+
 <body>
     <!--increased the base font size for A11y change in css file-->
     <!--skip link for keyboard navigation A11y change-->
@@ -25,11 +30,13 @@
             <li><a href="/personal-budget1/about.html" title="Learn more about personal budget">About</a></li>
             <li><a href="/personal-budget1/login.html" title="Login to personal budget">Login</a></li>
             <!--added rel and target attributes for external link for impact on SEO-->
-            <li><a href="https://google.com" title="Search on google" rel="noopener" target="_blank" aria-label="Search on Google">Google</a></li>
+            <li><a href="https://google.com" title="Search on google" rel="noopener" target="_blank"
+                    aria-label="Search on Google">Google</a></li>
         </ul>
     </nav>
     <!--A11y change included role and aria-label for header-->
-    <header class="hero" role="banner" aria-label="Hero section: Personal Budget App introduction"> <!--used header for hero section-->
+    <header class="hero" role="banner" aria-label="Hero section: Personal Budget App introduction">
+        <!--used header for hero section-->
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
     </header>
@@ -47,30 +54,30 @@
                     app will help you with that!
                 </p>
             </article>
-    
+
             <article class="text-box">
                 <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </article>
-    
+
             <article class="text-box">
                 <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                    Also, they to live happier lives... since they expend without guilt or fear... 
+                    Also, they to live happier lives... since they expend without guilt or fear...
                     because they know it is all good and accounted for.
                 </p>
             </article>
-    
+
             <article class="text-box">
-                <h2>Free</h2>
+                <h2>Chart</h2>
                 <p>
-                    This app is free!!! And you are the only one holding your data!
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
-    
+
             <article class="text-box">
                 <h2>Stay on track</h2>
                 <p>
@@ -79,31 +86,32 @@
                     app will help you with that!
                 </p>
             </article>
-    
+
             <article class="text-box">
                 <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </article>
-    
+
             <article class="text-box">
                 <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                    Also, they to live happier lives... since they expend without guilt or fear... 
+                    Also, they to live happier lives... since they expend without guilt or fear...
                     because they know it is all good and accounted for.
                 </p>
             </article>
-    
+
             <article class="text-box">
-                <h2>Chart</h2>
+                <h2>Free</h2>
                 <p>
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                    This app is free!!! And you are the only one holding your data!
                 </p>
             </article>
-
         </section>
+        <h2>My Budget Chart</h2>
+        <svg id="chart" width="600" height="600"></svg>
 
     </main>
 
@@ -113,7 +121,9 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+        integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -122,17 +132,22 @@
                 {
                     data: [],
                     backgroundColor: [
-                        '#ffcd56',
-                        '#ff6384',
-                        '#36a2eb',
-                        '#fd6b19'
+                        '#ffcd56', // yellow
+                        '#ff6384', // pink/red
+                        '#36a2eb', // blue
+                        '#fd6b19', // orange
+                        '#4bc0c0', // teal
+                        '#9966ff', // purple
+                        '#ff9f40', // light orange
+                        '#c9cbcf'  // light gray
                     ],
+
                 }
             ],
             labels: [
             ]
         };
-        function createChart(){
+        function createChart() {
             var ctx = document.getElementById("myChart").getContext("2d");
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
@@ -142,18 +157,76 @@
 
         function getBudget() {
             axios.get('/budget')
-            .then(function (res) {
-                console.log(res.data)
-                for(var i = 0; i < res.data.myBudget.length; i++){
-                    data.datasets[0].data[i] = res.data.myBudget[i].budget;
-                    data.labels[i] = res.data.myBudget[i].title
-                }
-                createChart();
-            })
+                .then(function (res) {
+                    // console.log(res.data)
+                    for (var i = 0; i < res.data.myBudget.length; i++) {
+                        data.datasets[0].data[i] = res.data.myBudget[i].budget;
+                        data.labels[i] = res.data.myBudget[i].title
+                    }
+                    createChart();
+                })
         }
         getBudget();
-        
+
+    </script>
+
+    <script>
+        function getBudgetUsingD3() {
+            axios.get('/budget')
+                .then(function (res) {
+                    const budgetData = res.data.myBudget;
+                    console.log("d3", budgetData)
+
+                    const width = 600;
+                    const height = 600;
+                    const radius = Math.min(width, height) / 2;
+
+                    d3.select("#chart").selectAll("*").remove();
+
+                    const svg = d3.select('#chart')
+                        .append("svg")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .append("g")
+                        .attr("transform", `translate(${width / 2},${height / 2})`);
+
+                    const pie = d3.pie()
+                        .value(d => d.budget)
+                        .sort(null);
+
+                    const arc = d3.arc()
+                        .outerRadius(radius * 0.8)
+                        .innerRadius(radius * 0.4);
+
+
+                    const arcs = svg.selectAll("arc")
+                        .data(pie(budgetData))
+                        .enter()
+                        .append("g")
+                        .attr("class", "arc");
+
+                    arcs.append("path")
+                        .attr("d", arc)
+                        .attr("fill", d => d.data.color);
+
+
+                    arcs.append("text")
+                        .attr("transform", d => `translate(${arc.centroid(d)})`)
+                        .attr("dy", ".35em")
+                        .attr("text-anchor", "middle")
+                        .text(d => d.data.title)
+                        .style("font-size", "12px")
+                        .style("fill", "white")
+                        .style("font-weight", "bold");
+
+                })
+                .catch(function (err) {
+                    console.log('Error fetching data:', err);
+                })
+        }
+        getBudgetUsingD3();
     </script>
 
 </body>
+
 </html>
