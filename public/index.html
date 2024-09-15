@@ -10,8 +10,8 @@
     <meta property="og:title" content="Personal Budget - Manage Your Budget Effectively">
     <meta property="og:description" content="Personal Budget is a free app designed to help you manage and track your budget with real data, alerts, and financial planning tips.">
 
-    <link rel="stylesheet" href="/pb/reset.css">
-    <link rel="stylesheet" href="/pb/main.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <!--increased the base font size for A11y change in css file-->
@@ -97,9 +97,9 @@
             </article>
     
             <article class="text-box">
-                <h2>Free</h2>
+                <h2>Chart</h2>
                 <p>
-                    This app is free!!! And you are the only one holding your data!
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
 
@@ -112,6 +112,48 @@
             All rights reserved &copy; Devanand
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var data = {
+            datasets: [
+                {
+                    data: [],
+                    backgroundColor: [
+                        '#ffcd56',
+                        '#ff6384',
+                        '#36a2eb',
+                        '#fd6b19'
+                    ],
+                }
+            ],
+            labels: [
+            ]
+        };
+        function createChart(){
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data
+            })
+        }
+
+        function getBudget() {
+            axios.get('/budget')
+            .then(function (res) {
+                console.log(res.data)
+                for(var i = 0; i < res.data.myBudget.length; i++){
+                    data.datasets[0].data[i] = res.data.myBudget[i].budget;
+                    data.labels[i] = res.data.myBudget[i].title
+                }
+                createChart();
+            })
+        }
+        getBudget();
+        
+    </script>
 
 </body>
 </html>
