@@ -1,10 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3000;
 
-app.use('/', express.static('public'))
+app.use(cors());
 
 
 app.get('/home', (req, res) => {
@@ -25,5 +26,5 @@ app.get('/budget', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`);
+    console.log(`API running at http://localhost:${port}`);
 })
